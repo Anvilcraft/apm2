@@ -231,6 +231,7 @@ public class BlockAdvPwrMan extends BlockContainer{
 	
 	@Override
 	public int isProvidingWeakPower(IBlockAccess block, int x, int y, int z, int side){
+		System.out.println("Get Redstone Power");
 		TileEntity tile = block.getTileEntity(x, y, z);
 		return tile instanceof TEStorageMonitor && ((TEStorageMonitor) tile).isPowering ? 15 : 0; // TODO
 																									// Verify
@@ -246,7 +247,7 @@ public class BlockAdvPwrMan extends BlockContainer{
 	
 	@Override
 	public boolean canProvidePower(){
-		return false; // Old means of causing visual RedPower wire connections.
+		return true;
 	}
 	
 	@Override
