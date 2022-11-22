@@ -97,7 +97,7 @@ public class TEBatteryStation extends TECommonBench implements IEnergySource, II
 	
 	@Override
 	public int getSourceTier(){
-		return 4; // XXX: cause I dunno what to put... / READ THE JAVADOC YOU NOOB - xbony2
+		return powerTier; // XXX: cause I dunno what to put... / READ THE JAVADOC YOU NOOB - xbony2
 	}
 	
 	// End IC2 API

@@ -8,6 +8,7 @@ import ic2.api.Direction;
 import ic2.api.item.ElectricItem;
 import ic2.api.item.IElectricItem;
 import ic2.api.tile.IEnergyStorage;
+import ic2.api.energy.EnergyNet;
 import ic2.api.energy.event.EnergyTileLoadEvent;
 import ic2.api.energy.tile.IEnergySink;
 import ic2.core.IC2;
@@ -99,7 +100,7 @@ public class TEChargingBench extends TECommonBench implements IEnergySink, IEner
 		// System.out.println("Initializing - BaseTier: " + baseTier);
 		
 		// Max Input math = 32 for tier 1, 128 for tier 2, 512 for tier 3
-		baseMaxInput = (int) Math.pow(2.0D, (double) (2 * baseTier + 3));
+		baseMaxInput = (int) EnergyNet.instance.getPowerFromTier(baseTier);
 		// if (ChargingBench.isDebugging) System.out.println("BaseMaxInput: " +
 		// baseMaxInput);
 		
@@ -158,7 +159,7 @@ public class TEChargingBench extends TECommonBench implements IEnergySink, IEner
 	
 	@Override
 	public int getSinkTier(){
-		return adjustedMaxInput;
+		return powerTier;
 	}
 	
 	// IEnergyStorage

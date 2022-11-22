@@ -11,7 +11,9 @@ buildscript {
         }
     }
     dependencies {
-        classpath 'net.minecraftforge.gradle:ForgeGradle:1.2-SNAPSHOT'
+        classpath ('com.anatawa12.forge:ForgeGradle:1.2-1.0.+') {
+            changing = true
+        }
     }
 }
 
@@ -34,7 +36,7 @@ repositories {
 }
 
 dependencies {
-	compile ic2Version
+	implementation ic2Version
 }
 
 
@@ -42,13 +44,7 @@ processResources {
     inputs.property "version", project.version
     inputs.property "mcversion", project.minecraft.version
 
-    from(sourceSets.main.resources.srcDirs) {
-        include 'mcmod.info'
-                
+    filesMatching('mcmod.info') {
         expand 'version':project.version, 'mcversion':project.minecraft.version
-    }
-        
-    from(sourceSets.main.resources.srcDirs) {
-        exclude 'mcmod.info'
     }
 }
